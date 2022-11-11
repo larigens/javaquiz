@@ -1,0 +1,106 @@
+/* Pseudo-class that matches the root element of the document. */
+:root {
+    --dark-shades: #240046;
+    --dark-accent: #6444c3;
+    --main-brand: #49d3f4;
+    --light-accent: #f0a0cf;
+    --light-shades: #f6eef3;
+    --gradient: linear-gradient(45deg, var(--main-brand), var(--light-accent), var(--dark-accent));
+    --heading: 'Oooh Baby', cursive;
+    --body: 'Montserrat', sans-serif;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--light-shades);
+    font-family: var(--body);
+    color: var(--dark-shades);
+}
+
+header {
+    height: 30vh;
+    padding: 5px;
+}
+
+h1 {
+    margin: 20px;
+    font-size: 35px;
+    text-align: center;
+    letter-spacing: .2em;
+    background: var(--gradient);
+    background-clip: none;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.quiz {
+    font-family: var(--heading);
+    font-style: italic;
+}
+
+nav {
+    margin-top: 14px;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #6444c3;
+}
+
+nav a:hover {
+    color: var(--main-brand);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#introduction {
+    flex: 0 0 100%;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-content: center;
+    height: 90vh;
+    text-align: center;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 400;
+    background: var(--gradient);
+    background-clip: none;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+    font-weight: lighter;
+    color: var(--dark-accent);
+}
+
+#start {
+    cursor: pointer;
+    border: none;
+    border-radius: 10%;
+    padding: 9px 30px;
+    font-size: 18px;
+    background: var(--gradient);
+    color: var(--light-shades);
+
+}
+
+.hide {
+    display: none;
+}
