@@ -24,18 +24,22 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="./assets/favicon/site.webmanifest">
-</head>
 
 <body>
+    <!-- Header -->
     <header>
         <h1>Java<span class="quiz">Quiz</span></h1>
         <nav>
             <a href="#">View HighScores</a>
         </nav>
+        <div id="timer">
+            <p>Timer: </p>
+        </div>
         <!-- Insert 300 seconds (5min) timer -->
     </header>
+    <!-- Main Content -->
     <main id="main">
-        <div id="introduction">
+        <div id="introduction" class="show">
             <h2>Coding Quiz Challenge</h2>
             <p>
                 Try to answer the following questions about JavaScript within the time limit. You will be presented with
@@ -48,18 +52,25 @@
             <br>
             <button id="start">Start Quiz</button>
         </div>
-        <div id="first-question" class="hide">
-            <h3>Inside which HTML element do we put the JavaScript?</h3>
-            <div class="options">
-                <button id="btn1" class="btn"></button>
-                <button id="btn2" class="btn"></button>
-                <button id="btn3" class="btn"></button>
-                <button id="btn4" class="btn"></button>
-                <br id="lineBreak" class="hide">
-                <p id="validateAnswer" class="hide"></p>
-            </div>
+        <!-- I was going to add a form but that would take longer for the user to go through all the questions -->
+        <!-- If I add multiple divs, it will not stay in the same place.... I should probably add it to js and use textcontext or innerHTML -->
+        <div id="question-container" class="hide">
+            <h3 id="question"></h3>
+            <button id="option1" class="btn"></button>
+            <button id="option2" class="btn"></button>
+            <button id="option3" class="btn"></button>
+            <button id="option4" class="btn"></button>
+            <p id="validateAnswer"></p>
+        </div>
+        <!-- Create a different div for winners -->
+        <div id="username-container" class="hide">
+            <input id="username" type="text" placeholder="Enter your initials">
         </div>
     </main>
+    <!-- Footer -->
+    <footer>
+        <p> &copy; 2022 Larissa Guilherme </p>
+    </footer>
     <!-- My JS file -->
     <script src="./assets/js/script.js"></script>
 </body>
