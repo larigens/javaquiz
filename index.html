@@ -32,8 +32,8 @@
         <nav>
             <a href="#">View HighScores</a>
         </nav>
-        <div id="timer">
-            <p>Timer: </p>
+        <div id="timer-container">
+            <p> Timer: <span id="timer"></span></p>
         </div>
         <!-- Insert 300 seconds (5min) timer -->
     </header>
@@ -63,8 +63,12 @@
             <p id="validateAnswer"></p>
         </div>
         <!-- Create a different div for winners -->
-        <div id="username-container" class="hide">
-            <input id="username" type="text" placeholder="Enter your initials">
+        <div id="final-container" class="hide">
+            <p id="final-score"></p>
+            <input id="initials" type="text" placeholder="Enter your initials">
+        </div>
+        <div id="highscores" class="hide">
+            <!-- Display list of scores -->
         </div>
     </main>
     <!-- Footer -->

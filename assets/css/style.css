@@ -57,12 +57,12 @@ nav a:hover {
     color: var(--main-brand);
 }
 
-#timer {
+#timer-container {
     margin: 30px;
     padding-left: 800px;
 }
 
-#timer p {
+#timer-container p {
     color: var(--dark-accent);
 }
 
