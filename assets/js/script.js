@@ -119,12 +119,42 @@ var inputEl = document.getElementById("initials");
 
 // Others
 var currentQuestion = 0;
-var secondsLeft = 100;
+// Had to add 1 seconds because it only starts to show the timer after 1s
+var secondsLeft = 101;
 var score = 0;
 var finalScore;
 
-// Starting Quiz on Click
-start.addEventListener("click", setTimer);
+// // Starting Quiz on Click
+
+// Starts the timer
+function setTimer() {
+    // Sets interval in variable
+    var timerInterval = setInterval(function () {
+        // Decrementing
+        secondsLeft--;
+        // Displays the seconds left
+        timerEl.textContent = secondsLeft;
+        // When time is over or the user answers eveyrthing - clear interval so the time does not turn negative
+        if (secondsLeft === 0 || currentQuestion > challenge.length) {
+            // Stops the timer (the timer that I want to stop)
+            clearInterval(timerInterval);
+            // Calls function for when the time is up
+            gameOver()
+        }
+        // Computer runs in miliseconds. Every 1s it will do the task. It will update the time every second (1000ms)
+    }, 1000);
+    // Displays the question container 
+    startQuiz(0)
+}
+
+// Starts the quiz and removes the introduction container
+function startQuiz(currentQuestion) {
+    // Change element display to hide it
+    introduction.setAttribute("class", "hide");
+    // First Question will appear
+    questionContainer.setAttribute("class", "show");
+    changeQuestion(currentQuestion);
+}
 
 function changeQuestion(currentQuestion) {
     // Displays the question inside the container. I chose text content because innerHTML thinks <> is an element even though is inside strings
@@ -139,70 +169,62 @@ function changeQuestion(currentQuestion) {
     option2El.value = challenge[currentQuestion].options[1].isCorrect;
     option3El.value = challenge[currentQuestion].options[2].isCorrect;
     option4El.value = challenge[currentQuestion].options[3].isCorrect;
-
-    // option1El.addEventListener("click", function () {
-    //     clicked = option1El.value;
-    // })
-    // option2El.addEventListener("click", function () {
-    //     clicked = option2El.value;
-    // })
-    // option3El.addEventListener("click", function () {
-    //     clicked = option3El.value;
-    // })
-    // option4El.addEventListener("click", function () {
-    //     clicked = option4El.value;
-    // })
-    // return clicked;
 }
 
-
+// Validates the question 
 function selectedAns1() {
-    var clicked;
-    clicked = option1El.value;
-    return clicked;
-}
-function selectedAns2() {
-    var clicked;
-    clicked = option2El.value;
-    return clicked;
-}
-function selectedAns3() {
-    var clicked;
-    clicked = option3El.value;
-    return clicked;
-}
-function selectedAns4() {
-    var clicked;
-    clicked = option4El.value;
-    return clicked;
-}
-
-
-function validateAnswer() {
-    // Validates the question 
-    if (clicked === "true") {
-        answerEl.textContent = "Impressive!";
-        answerEl.style.color = "#f0a0cf";
-        score++;
+    if (option1El.value === "true") {
+        isRight();
     }
     else {
-        answerEl.textContent = "False";
-        answerEl.style.color = "#6444c3";
-        // Code to reduce the time by 10s
-        secondsLeft = secondsLeft - 10;
+        isWrong();
     }
-
-    next();
 }
+function selectedAns2() {
+    if (option2El.value === "true") {
+        isRight();
+    }
+    else {
+        isWrong();
+    }
+}
+function selectedAns3() {
+    if (option3El.value === "true") {
+        isRight();
+    }
+    else {
+        isWrong();
+    }
+}
+function selectedAns4() {
+    if (option4El.value === "true") {
+        isRight();
+    }
+    else {
+        isWrong();
+    }
+}
+
+// Displays answer
+function isRight() {
+    answerEl.textContent = "Impressive!";
+    answerEl.style.color = "#f0a0cf";
+    score++;
+}
+function isWrong() {
+    answerEl.textContent = "False";
+    answerEl.style.color = "#6444c3";
+    // Code to reduce the time by 10s
+    secondsLeft = secondsLeft - 10;
+}
+
+next();
+
 
 function next() {
     // Need to add a stopping point - 10 questions currentQuestion<9
     if (currentQuestion < challenge.length) {
         changeQuestion(currentQuestion);
-    }
-    else {
-        gameOver();
-        // Stops the timer (the timer that I want to stop)
     }
 
     currentQuestion++;
@@ -250,43 +272,6 @@ function next() {
 //     }
 // })
 // Need something to remove the text context after the question changes
-
-
-
-
-
-// Starts the quiz and removes the introduction container
-function startQuiz(currentQuestion) {
-    // Change element display to hide it
-    introduction.setAttribute("class", "hide");
-    // First Question will appear
-    questionContainer.setAttribute("class", "show");
-    changeQuestion(currentQuestion);
-}
-
-// Starts the timer
-function setTimer() {
-    // Sets interval in variable
-    var timerInterval = setInterval(function () {
-        // When time is over - clear interval so the time does not turn negative
-        if (secondsLeft === 0) {
-            // Stops the timer (the timer that I want to stop)
-            clearInterval(timerInterval);
-            // Calls function for when the time is up
-            gameOver()
-        }
-        else {
-            // Decrementing
-            secondsLeft--;
-            // Displays the seconds left
-            timerEl.textContent = secondsLeft;
-        }
-        // Computer runs in miliseconds. Every 1s it will do the task. It will update the time every second (1000ms)
-    }, 1000);
-    // Displays the question container 
-    startQuiz(0)
-}
-
 
 // Function for when the time is up
 function gameOver() {
