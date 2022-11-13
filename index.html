@@ -44,7 +44,7 @@
             <p>
                 Try to answer the following questions about JavaScript within the time limit. You will be presented with
                 10
-                questions and have 3 minutes to answer.
+                questions and have 100 seconds to answer.
             </p>
             <p>
                 Keep in mind that incorrect answers will penalize your score and decrease your time by ten seconds!
@@ -56,11 +56,12 @@
         <!-- If I add multiple divs, it will not stay in the same place.... I should probably add it to js and use textcontext or innerHTML -->
         <div id="question-container" class="hide">
             <h3 id="question"></h3>
+            <!-- I should probably add another div for positioning -->
             <button id="option1" class="btn"></button>
             <button id="option2" class="btn"></button>
             <button id="option3" class="btn"></button>
             <button id="option4" class="btn"></button>
-            <p id="validateAnswer"></p>
+            <p id="validate-answer"></p>
         </div>
         <!-- Create a different div for winners -->
         <div id="final-container" class="hide">
