@@ -26,58 +26,81 @@
     <link rel="manifest" href="./assets/favicon/site.webmanifest">
 
 <body>
+
     <!-- Header -->
     <header>
         <h1>Java<span class="quiz">Quiz</span></h1>
         <nav>
-            <a href="#">View HighScores</a>
+            <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>View HighScores</a>
         </nav>
         <div id="timer-container">
-            <p> Timer: <span id="timer"></span></p>
+            <p><i class="fa fa-clock-o" aria-hidden="true"></i> Timer: <span id="timer"></span></p>
         </div>
-        <!-- Insert 300 seconds (5min) timer -->
     </header>
+
     <!-- Main Content -->
     <main id="main">
-        <div id="introduction" class="show">
+
+        <!-- Introduction Section -->
+        <section id="introduction" class="show">
             <h2>Coding Quiz Challenge</h2>
-            <p>
-                Try to answer the following questions about JavaScript within the time limit. You will be presented with
-                10
-                questions and have 100 seconds to answer.
-            </p>
-            <p>
-                Keep in mind that incorrect answers will penalize your score and decrease your time by ten seconds!
-            </p>
-            <br>
+            <ol>
+                <li> You will be presented with <span class="standout">10 questions</span> and have <span
+                        class="standout">100 seconds</span> to answer.</li>
+                <li> Be sure before selecting the answer, as you will not be able to unselect.</li>
+                <li> Keep in mind that incorrect answers will penalize your score and decrease your time by <span
+                        class="standout">10 seconds</span>.
+                </li>
+                <li>The game ends when you answer all the questions or once the time ends.</li>
+            </ol>
             <button id="start">Start Quiz</button>
-        </div>
-        <!-- I was going to add a form but that would take longer for the user to go through all the questions -->
-        <!-- If I add multiple divs, it will not stay in the same place.... I should probably add it to js and use textcontext or innerHTML -->
-        <div id="question-container" class="hide">
-            <h3 id="question"></h3>
-            <!-- I should probably add another div for positioning -->
-            <button id="option1" class="btn"></button>
-            <button id="option2" class="btn"></button>
-            <button id="option3" class="btn"></button>
-            <button id="option4" class="btn"></button>
-            <p id="validate-answer"></p>
-        </div>
-        <!-- Create a different div for winners -->
-        <div id="final-container" class="hide">
+        </section>
+
+        <!-- Question Section -->
+        <section id="question-section" class="hide">
+            <!-- All the divs were added for styling and positioning -->
+            <div class="question-title">
+                <h3 id="question"></h3>
+            </div>
+            <div class="question-options">
+                <button id="option1" class="btn" onclick="selectedAns1()"></button>
+                <button id="option2" class="btn" onclick="selectedAns2()"></button>
+                <button id="option3" class="btn" onclick="selectedAns3()"></button>
+                <button id="option4" class="btn" onclick="selectedAns4()"></button>
+            </div>
+            <div class="question-answer">
+                <p id="answer-check"></p>
+            </div>
+            <!-- <div class="question-footer">
+                <p id="current-question">Question</p>
+                <button id="next">Next</button>
+            </div> -->
+        </section>
+
+        <!-- Game Over Section -->
+        <section id="final-container" class="hide">
             <p id="final-score"></p>
             <input id="initials" type="text" placeholder="Enter your initials">
-        </div>
-        <div id="highscores" class="hide">
+            <button id="final-btn" type="submit">Submit</button>
+        </section>
+
+        <!-- Add buttons to quit and replay -->
+
+        <!-- Sidebar to display high scores -->
+        <aside id="highscores" class="hide">
             <!-- Display list of scores -->
-        </div>
+        </aside>
+
     </main>
+
     <!-- Footer -->
     <footer>
         <p> &copy; 2022 Larissa Guilherme </p>
     </footer>
+
     <!-- My JS file -->
     <script src="./assets/js/script.js"></script>
+
 </body>
 
 </html>

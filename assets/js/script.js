@@ -100,14 +100,19 @@ var challenge = [
 // Add event listener to button - do not add the () or it will run the function without the user clicking the button
 var start = document.getElementById("start");
 var timerEl = document.getElementById("timer");
+
 var introduction = document.getElementById("introduction");
-var questionContainer = document.getElementById("question-container");
+
+var questionContainer = document.getElementById("question-section");
 var questionEl = document.getElementById("question");
 var option1El = document.getElementById("option1");
 var option2El = document.getElementById("option2");
 var option3El = document.getElementById("option3");
 var option4El = document.getElementById("option4");
-var validateEl = document.getElementById("validate-answer");
+
+var answerContainer = document.getElementsByClassName("question-answer")
+var answerEl = document.getElementById("answer-check");
+
 var finalContainer = document.getElementById("final-container");
 var scoreEl = document.getElementById("final-score");
 var inputEl = document.getElementById("initials");
@@ -135,28 +140,54 @@ function changeQuestion(currentQuestion) {
     option3El.value = challenge[currentQuestion].options[2].isCorrect;
     option4El.value = challenge[currentQuestion].options[3].isCorrect;
 
+    // option1El.addEventListener("click", function () {
+    //     clicked = option1El.value;
+    // })
+    // option2El.addEventListener("click", function () {
+    //     clicked = option2El.value;
+    // })
+    // option3El.addEventListener("click", function () {
+    //     clicked = option3El.value;
+    // })
+    // option4El.addEventListener("click", function () {
+    //     clicked = option4El.value;
+    // })
+    // return clicked;
+}
+
+
+function selectedAns1() {
     var clicked;
-    option1El.addEventListener("click", function () {
-        clicked = option1El.value;
-    })
-    option2El.addEventListener("click", function () {
-        clicked = option1El.value;
-    })
-    option3El.addEventListener("click", function () {
-        clicked = option1El.value;
-    })
-    option4El.addEventListener("click", function () {
-        clicked = option1El.value;
-    })
+    clicked = option1El.value;
+    return clicked;
+}
+function selectedAns2() {
+    var clicked;
+    clicked = option2El.value;
+    return clicked;
+}
+function selectedAns3() {
+    var clicked;
+    clicked = option3El.value;
+    return clicked;
+}
+function selectedAns4() {
+    var clicked;
+    clicked = option4El.value;
+    return clicked;
+}
+
+
+function validateAnswer() {
     // Validates the question 
     if (clicked === "true") {
-        validateEl.textContent = "Impressive!";
-        validateEl.style.color = "#f0a0cf";
+        answerEl.textContent = "Impressive!";
+        answerEl.style.color = "#f0a0cf";
         score++;
     }
     else {
-        validateEl.textContent = "False";
-        validateEl.style.color = "#6444c3";
+        answerEl.textContent = "False";
+        answerEl.style.color = "#6444c3";
         // Code to reduce the time by 10s
         secondsLeft = secondsLeft - 10;
     }
@@ -181,39 +212,39 @@ function next() {
 
 // option2El.addEventListener("click", function () {
 //     if (option2El.value === "true") {
-//         validateEl.textContent = "Impressive!";
-//         validateEl.style.color = "#f0a0cf";
+//         answerEl.textContent = "Impressive!";
+//         answerEl.style.color = "#f0a0cf";
 //         score++;
 //     }
 //     else {
-//         validateEl.textContent = "False";
-//         validateEl.style.color = "#6444c3";
+//         answerEl.textContent = "False";
+//         answerEl.style.color = "#6444c3";
 //         // Code to reduce the time by 10s
 //         secondsLeft = secondsLeft - 10;
 //     }
 // })
 // option3El.addEventListener("click", function () {
 //     if (option3El.value === "true") {
-//         validateEl.textContent = "Impressive!";
-//         validateEl.style.color = "#f0a0cf";
+//         answerEl.textContent = "Impressive!";
+//         answerEl.style.color = "#f0a0cf";
 //         score++;
 //     }
 //     else {
-//         validateEl.textContent = "False";
-//         validateEl.style.color = "#6444c3";
+//         answerEl.textContent = "False";
+//         answerEl.style.color = "#6444c3";
 //         // Code to reduce the time by 10s - Fix this
 //         secondsLeft = secondsLeft - 10;
 //     }
 // })
 // option4El.addEventListener("click", function () {
 //     if (option4El.value === "true") {
-//         validateEl.textContent = "Impressive!";
-//         validateEl.style.color = "#f0a0cf";
+//         answerEl.textContent = "Impressive!";
+//         answerEl.style.color = "#f0a0cf";
 //         score++;
 //     }
 //     else {
-//         validateEl.textContent = "False";
-//         validateEl.style.color = "#6444c3";
+//         answerEl.textContent = "False";
+//         answerEl.style.color = "#6444c3";
 //         // Code to reduce the time by 10s
 //         secondsLeft = secondsLeft - 10;
 //     }
@@ -225,7 +256,7 @@ function next() {
 
 
 // Starts the quiz and removes the introduction container
-function startQuiz() {
+function startQuiz(currentQuestion) {
     // Change element display to hide it
     introduction.setAttribute("class", "hide");
     // First Question will appear
@@ -253,7 +284,7 @@ function setTimer() {
         // Computer runs in miliseconds. Every 1s it will do the task. It will update the time every second (1000ms)
     }, 1000);
     // Displays the question container 
-    startQuiz()
+    startQuiz(0)
 }
 
 
