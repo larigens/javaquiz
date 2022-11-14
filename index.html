@@ -42,7 +42,7 @@
     <main id="main">
 
         <!-- Introduction Section -->
-        <section id="introduction" class="show">
+        <section id="introduction" data-state="visible">
             <h2>Coding Quiz Challenge</h2>
             <ol>
                 <li> You will be presented with <span class="standout">10 questions</span> and have <span
@@ -57,7 +57,7 @@
         </section>
 
         <!-- Question Section -->
-        <section id="question-section" class="hide">
+        <section id="question-section" data-state="hidden">
             <!-- All the divs were added for styling and positioning -->
             <div class="question-title">
                 <h3 id="question"></h3>
@@ -65,20 +65,19 @@
             <div class="question-options">
                 <button id="option1" class="btn" onclick="selectedAns1(); next()"></button>
                 <button id="option2" class="btn" onclick="selectedAns2(); next()"></button>
-                <button id="option3" class="btn" onclick="selectedAns2(); next()"></button>
-                <button id="option4" class="btn" onclick="selectedAns2(); next()"></button>
+                <button id="option3" class="btn" onclick="selectedAns3(); next()"></button>
+                <button id="option4" class="btn" onclick="selectedAns4(); next()"></button>
             </div>
             <div class="question-answer">
                 <p id="answer-check"></p>
             </div>
             <!-- <div class="question-footer">
                 <p id="current-question">Question</p>
-                <button id="next">Next</button>
             </div> -->
         </section>
 
         <!-- Game Over Section -->
-        <section id="final-container" class="hide">
+        <section id="final-container" data-state="hidden">
             <p id="final-score"></p>
             <input id="initials" type="text" placeholder="Enter your initials">
             <button id="final-btn" type="submit">Submit</button>
@@ -87,7 +86,7 @@
         <!-- Add buttons to quit and replay -->
 
         <!-- Sidebar to display high scores -->
-        <aside id="highscores" class="hide">
+        <aside id="highscores" data-state="hidden">
             <!-- Display list of scores -->
         </aside>
 

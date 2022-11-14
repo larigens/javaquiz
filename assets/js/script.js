@@ -104,6 +104,7 @@ var timerEl = document.getElementById("timer");
 var introduction = document.getElementById("introduction");
 
 var questionContainer = document.getElementById("question-section");
+var optionsContainer = document.getElementsByClassName("question-options");
 var questionEl = document.getElementById("question");
 var option1El = document.getElementById("option1");
 var option2El = document.getElementById("option2");
@@ -144,11 +145,11 @@ function setTimer() {
         // Computer runs in miliseconds. Every 1s it will do the task. It will update the time every second (1000ms)
     }, 1000);
     // Displays the question container 
-    startQuiz(0)
+    startQuiz()
 }
 
 // Starts the quiz and removes the introduction container
-function startQuiz(currentQuestion) {
+function startQuiz() {
     // Change element display to hide it
     introduction.setAttribute("class", "hide");
     // First Question will appear
@@ -170,6 +171,34 @@ function changeQuestion(currentQuestion) {
     option3El.value = challenge[currentQuestion].options[2].isCorrect;
     option4El.value = challenge[currentQuestion].options[3].isCorrect;
 }
+
+
+// Try event target to reduce this code
+
+// var optionsClick = document.getElementsByClassName("question-options")
+// Have to add this function to make sure it will only check for the button, not the rest of the container
+// use matches.
+// optionsClick.addEventListener("click", function(event){
+// var clickedEl = event.target
+// if (clickedEl.matches("button")){
+// var state = element.getAttribute("data-state")
+// }
+// if (state === "hidden") {
+//     element.dataset.state = "visible";
+// }
+//     if (clickedEl.value === "true"){
+//         isRight();
+//     }
+//     else {
+//         isWrong();
+//     }
+// })
+// function loadQuestions(numberOfOptions) {
+//     for (var i = 0; i < numberOfOptions; i++) {
+//         console.log('Generate options: ${i}')
+//         optionsContainer.innerHTML += '<button id="option${1}" class="btn" onclick="selectedAns1(); next()"></button>'
+//     }
+// }
 
 // Validates the question 
 function selectedAns1() {
@@ -220,7 +249,6 @@ function isWrong() {
 
 next();
 
-
 function next() {
     // Need to add a stopping point - 10 questions currentQuestion<9
     if (currentQuestion < challenge.length) {
@@ -230,47 +258,6 @@ function next() {
     currentQuestion++;
 }
 
-
-
-// option2El.addEventListener("click", function () {
-//     if (option2El.value === "true") {
-//         answerEl.textContent = "Impressive!";
-//         answerEl.style.color = "#f0a0cf";
-//         score++;
-//     }
-//     else {
-//         answerEl.textContent = "False";
-//         answerEl.style.color = "#6444c3";
-//         // Code to reduce the time by 10s
-//         secondsLeft = secondsLeft - 10;
-//     }
-// })
-// option3El.addEventListener("click", function () {
-//     if (option3El.value === "true") {
-//         answerEl.textContent = "Impressive!";
-//         answerEl.style.color = "#f0a0cf";
-//         score++;
-//     }
-//     else {
-//         answerEl.textContent = "False";
-//         answerEl.style.color = "#6444c3";
-//         // Code to reduce the time by 10s - Fix this
-//         secondsLeft = secondsLeft - 10;
-//     }
-// })
-// option4El.addEventListener("click", function () {
-//     if (option4El.value === "true") {
-//         answerEl.textContent = "Impressive!";
-//         answerEl.style.color = "#f0a0cf";
-//         score++;
-//     }
-//     else {
-//         answerEl.textContent = "False";
-//         answerEl.style.color = "#6444c3";
-//         // Code to reduce the time by 10s
-//         secondsLeft = secondsLeft - 10;
-//     }
-// })
 // Need something to remove the text context after the question changes
 
 // Function for when the time is up
