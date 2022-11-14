@@ -71,16 +71,19 @@
             <div class="question-answer">
                 <p id="answer-check"></p>
             </div>
-            <!-- <div class="question-footer">
-                <p id="current-question">Question</p>
-            </div> -->
+            <div class="question-footer">
+                <p>Question <span id="current-question"></span> of 10</p>
+            </div>
         </section>
 
         <!-- Game Over Section -->
         <section id="final-container" data-state="hidden" class="hide">
-            <p id="final-score"></p>
-            <input id="initials" type="text" placeholder="Enter your initials">
-            <button id="final-btn" type="submit">Submit</button>
+            <div class="final-card">
+                <p id="final-score"></p>
+                <input id="initials" type="text" placeholder="Enter your initials" maxlength="2">
+                <br>
+                <button id="final-btn" type="submit">Submit</button>
+            </div>
         </section>
 
         <!-- Add buttons to quit and replay -->

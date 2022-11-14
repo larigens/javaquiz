@@ -76,7 +76,7 @@ var challenge = [
         ]
     },
     {
-        question: "if you want to create a conditional statement where two variables need to be true to get a result, which of the symbols should be used ?",
+        question: "If you want to create a conditional statement where two variables need to be true to get a result, which of the symbols should be used ?",
         options: [
             { text: "var1 + var2", isCorrect: false },
             { text: "var1 & var2", isCorrect: false },
@@ -113,7 +113,7 @@ var option4El = document.getElementById("option4");
 
 var answerContainer = document.getElementsByClassName("question-answer")
 var answerEl = document.getElementById("answer-check");
-
+var curQuestionEl = document.getElementById("current-question");
 var finalContainer = document.getElementById("final-container");
 var scoreEl = document.getElementById("final-score");
 var inputEl = document.getElementById("initials");
@@ -136,11 +136,11 @@ function setTimer() {
         // Displays the seconds left
         timerEl.textContent = secondsLeft;
         // When time is over or the user answers eveyrthing - clear interval so the time does not turn negative
-        if (secondsLeft === 0 || currentQuestion > challenge.length) {
+        if (secondsLeft === 0 || currentQuestion > 9) {
             // Stops the timer (the timer that I want to stop)
             clearInterval(timerInterval);
             // Calls function for when the time is up
-            gameOver()
+            gameOver();
         }
         // Computer runs in miliseconds. Every 1s it will do the task. It will update the time every second (1000ms)
     }, 1000);
@@ -170,8 +170,10 @@ function changeQuestion(currentQuestion) {
     option2El.value = challenge[currentQuestion].options[1].isCorrect;
     option3El.value = challenge[currentQuestion].options[2].isCorrect;
     option4El.value = challenge[currentQuestion].options[3].isCorrect;
-}
 
+    // Current question display
+    curQuestionEl.innerHTML = currentQuestion + 1;
+}
 
 // Try event target to reduce this code
 
@@ -244,7 +246,15 @@ function isWrong() {
     answerEl.textContent = "False";
     answerEl.style.color = "#6444c3";
     // Code to reduce the time by 10s
-    secondsLeft = secondsLeft - 10;
+    if (secondsLeft >= 10) {
+        secondsLeft = secondsLeft - 10;
+    }
+    else if (secondsLeft < 10) {
+        // Stops the timer (the timer that I want to stop)
+        clearInterval(timerInterval);
+        // Calls function for when the time is up
+        gameOver()
+    }
     // Code to reduce score
     if (score > 0) {
         score--;
@@ -255,7 +265,7 @@ next();
 
 function next() {
     // Need to add a stopping point - 10 questions currentQuestion<9
-    if (currentQuestion < challenge.length) {
+    if (currentQuestion < 10) {
         changeQuestion(currentQuestion);
     }
 

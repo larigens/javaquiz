@@ -38,7 +38,8 @@ h1 {
 h1,
 nav a:hover,
 h2,
-.standout {
+.standout,
+#final-score {
     background: var(--gradient);
     background-clip: none;
     -webkit-background-clip: text;
@@ -64,6 +65,8 @@ nav a,
 ol,
 h3,
 .btn,
+.question-footer p,
+::placeholder,
 #final-btn {
     color: var(--dark-accent);
 }
@@ -83,19 +86,13 @@ nav a i {
 
 main {
     margin: 0 auto;
-    height: 80vh;
+    height: 85vh;
     padding: 20px;
 }
 
 main,
-.btn,
-.question-footer {
+.btn {
     display: flex;
-
-}
-
-main,
-footer {
     justify-content: center;
     align-items: center;
 }
@@ -107,9 +104,18 @@ footer {
     border-radius: 5px;
     box-shadow: 0 4px 25px var(--light-accent);
     box-sizing: border-box;
-    width: 870px;
+    width: 880px;
     height: 450px;
     padding: 15px;
+}
+
+#introduction,
+#question-section,
+#final-container,
+#start,
+.btn,
+#final-btn,
+footer {
     text-align: center;
 }
 
@@ -155,7 +161,6 @@ li {
     border-radius: 5px;
     font-size: 18px;
     font-family: var(--body);
-    text-align: center;
 }
 
 #start,
@@ -182,7 +187,7 @@ li {
 }
 
 h3 {
-    font-size: 25px;
+    font-size: 21px;
 }
 
 .question-options {
@@ -206,6 +211,10 @@ h3 {
     border: none;
 }
 
+.question-answer {
+    height: 4vh;
+}
+
 #answer-check {
     margin: 5px 8px;
     font-size: 19px;
@@ -213,22 +222,61 @@ h3 {
     letter-spacing: 0.3rem;
 }
 
-#current-question {
-    justify-content: left;
+.question-footer {
+    margin: 15px auto 2px auto;
 }
 
-#next {
-    justify-content: right;
-    margin-bottom: 10px;
-    padding: 9px;
-    width: 20%;
+.question-footer p {
+    font-size: 15px;
+}
+
+.final-card {
+    margin-top: 100px;
+    padding: 20px;
+    text-align: center;
+}
+
+#final-score {
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+}
+
+#initials {
+    border: none;
+    border: 3px solid var(--light-shades);
+    box-shadow: 0 2px 10px var(--light-accent);
+    border-radius: 50px;
+    display: inline-flexbox;
+    text-align: center;
+    padding: 10px;
+    margin-top: 45px;
+    margin-bottom: 0;
+}
+
+::placeholder {
+    font-size: 13px;
+    letter-spacing: 0.1rem;
+}
+
+input[type=text] {
+    width: 30%;
+    font-weight: 400;
+    -webkit-transition: width 0.15s ease-in-out;
+    transition: width 0.15s ease-in-out;
+}
+
+input[type=text],
+footer {
     color: var(--light-accent);
+}
+
+input[type=text]:focus {
+    outline: none;
+    width: 40%;
 }
 
 footer {
     margin: 15px 0;
     font-size: 15px;
     font-weight: 350;
-    text-align: center;
-    color: var(--light-accent);
 }
