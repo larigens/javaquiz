@@ -104,7 +104,7 @@ var timerEl = document.getElementById("timer");
 var introduction = document.getElementById("introduction");
 
 var questionContainer = document.getElementById("question-section");
-var optionsContainer = document.getElementsByClassName("question-options");
+// var optionsContainer = document.getElementsByClassName("question-options");
 var questionEl = document.getElementById("question");
 var option1El = document.getElementById("option1");
 var option2El = document.getElementById("option2");
@@ -145,11 +145,11 @@ function setTimer() {
         // Computer runs in miliseconds. Every 1s it will do the task. It will update the time every second (1000ms)
     }, 1000);
     // Displays the question container 
-    startQuiz()
+    startQuiz(0)
 }
 
 // Starts the quiz and removes the introduction container
-function startQuiz() {
+function startQuiz(currentQuestion) {
     // Change element display to hide it
     introduction.setAttribute("class", "hide");
     // First Question will appear
@@ -245,6 +245,10 @@ function isWrong() {
     answerEl.style.color = "#6444c3";
     // Code to reduce the time by 10s
     secondsLeft = secondsLeft - 10;
+    // Code to reduce score
+    if (score > 0) {
+        score--;
+    }
 }
 
 next();

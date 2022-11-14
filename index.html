@@ -42,7 +42,7 @@
     <main id="main">
 
         <!-- Introduction Section -->
-        <section id="introduction" data-state="visible">
+        <section id="introduction" data-state="visible" class="show">
             <h2>Coding Quiz Challenge</h2>
             <ol>
                 <li> You will be presented with <span class="standout">10 questions</span> and have <span
@@ -57,7 +57,7 @@
         </section>
 
         <!-- Question Section -->
-        <section id="question-section" data-state="hidden">
+        <section id="question-section" data-state="hidden" class="hide">
             <!-- All the divs were added for styling and positioning -->
             <div class="question-title">
                 <h3 id="question"></h3>
@@ -77,7 +77,7 @@
         </section>
 
         <!-- Game Over Section -->
-        <section id="final-container" data-state="hidden">
+        <section id="final-container" data-state="hidden" class="hide">
             <p id="final-score"></p>
             <input id="initials" type="text" placeholder="Enter your initials">
             <button id="final-btn" type="submit">Submit</button>
