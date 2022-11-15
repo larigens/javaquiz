@@ -288,15 +288,16 @@ function gameOver() {
     });
 }
 
-function storedData() {
-    var userData = {
-        userInitials: localStorage.setItem("initials", inputEl.value),
-        userScore: localStorage.setItem("final-score", score)
+
+var userData = {
+    userInitials: localStorage.setItem("initials", inputEl.value),
+    userScore: localStorage.setItem("final-score", score),
+    storedData: function () {
+        return this.userInitials + ":" + this.userScore;
     }
-    // stringify array in order to store in local
-    var storedData = JSON.stringify(userData);
-    localStorage.setItem("highscores", storedData)
 }
+
+var setHighScores = localStorage.setItem("highscores", storedData);
 
 // TODO fix highcore section
 function displayHighScore() {
@@ -306,11 +307,11 @@ function displayHighScore() {
     highscoresContainer.setAttribute("class", "show");
 
     var savedHighScores = localStorage.getItem("highscores");
-    var storedData = JSON.parse(savedHighScores);
+    setHighScores = JSON.parse(savedHighScores);
 
-    for (i = 0; i < storedData.length; i++) {
+    for (i = 0; i < setHighScores.length; i++) {
         var pTag = document.createElement("p");
-        pTag.innerHTML = userData[i].userInitials + ": " + userData[i].userScore;
+        pTag.innerHTML = storedData;
         highscoresContainer.appendChild(pTag);
     }
 
