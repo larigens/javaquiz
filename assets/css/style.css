@@ -36,7 +36,7 @@ h1 {
 
 /* Gradient text */
 h1,
-nav a:hover,
+nav button:hover,
 h2,
 .standout,
 #final-score {
@@ -56,11 +56,7 @@ nav {
     padding: 15px;
 }
 
-nav a {
-    text-decoration: none;
-}
-
-nav a,
+nav button,
 #timer-container p,
 ol,
 h3,
@@ -71,7 +67,14 @@ h3,
     color: var(--dark-accent);
 }
 
-nav a i {
+nav button {
+    border: none;
+    outline: none;
+    background-color: var(--light-shades);
+    font-size: 16px;
+}
+
+nav button i {
     margin-right: 6px;
 }
 
@@ -99,7 +102,8 @@ main,
 
 #introduction,
 #question-section,
-#final-container {
+#final-container,
+#highscores {
     margin: 30px 0 10px 0;
     border-radius: 5px;
     box-shadow: 0 4px 25px var(--light-accent);
@@ -112,6 +116,7 @@ main,
 #introduction,
 #question-section,
 #final-container,
+#highscores,
 #start,
 .btn,
 #final-btn,
@@ -141,13 +146,11 @@ li {
     font-weight: 500;
 }
 
-#start {
-    box-shadow: 0 2px 10px 0 var(--light-accent);
-}
 
 #start,
 #final-btn {
     margin-top: 40px;
+    box-shadow: 0 2px 10px 0 var(--light-accent);
     padding: 9px 30px;
 }
 
@@ -164,7 +167,8 @@ li {
 }
 
 #start,
-.btn:hover {
+.btn:hover,
+#final-btn {
     background: var(--gradient);
     color: var(--light-shades);
 }
@@ -273,6 +277,11 @@ footer {
 input[type=text]:focus {
     outline: none;
     width: 40%;
+}
+
+#highscores p {
+    font-size: 18px;
+    color: var(--dark-shades);
 }
 
 footer {

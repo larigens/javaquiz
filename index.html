@@ -31,7 +31,7 @@
     <header>
         <h1>Java<span class="quiz">Quiz</span></h1>
         <nav>
-            <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>View HighScores</a>
+            <button class="highscores-btn" onclick="displayHighScore()"><i class="fa fa-bar-chart" aria-hidden="true"></i>View HighScores</button>
         </nav>
         <div id="timer-container">
             <p><i class="fa fa-clock-o" aria-hidden="true"></i> Timer: <span id="timer"></span></p>
@@ -89,9 +89,10 @@
         <!-- Add buttons to quit and replay -->
 
         <!-- Sidebar to display high scores -->
-        <aside id="highscores" data-state="hidden">
+        <section id="highscores" data-state="hidden" class="hide">
+            
             <!-- Display list of scores -->
-        </aside>
+        </section>
 
     </main>
 

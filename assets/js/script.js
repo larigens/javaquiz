@@ -117,6 +117,9 @@ var curQuestionEl = document.getElementById("current-question");
 var finalContainer = document.getElementById("final-container");
 var scoreEl = document.getElementById("final-score");
 var inputEl = document.getElementById("initials");
+var finalBtn = document.getElementById("final-btn");
+
+var highscoresContainer = document.getElementById("highscores");
 
 // Others
 var currentQuestion = 0;
@@ -136,7 +139,7 @@ function setTimer() {
         // Displays the seconds left
         timerEl.textContent = secondsLeft;
         // When time is over or the user answers eveyrthing - clear interval so the time does not turn negative
-        if (secondsLeft === 0 || currentQuestion > 9) {
+        if (secondsLeft === 0 || currentQuestion > challenge.length) {
             // Stops the timer (the timer that I want to stop)
             clearInterval(timerInterval);
             // Calls function for when the time is up
@@ -249,12 +252,7 @@ function isWrong() {
     if (secondsLeft >= 10) {
         secondsLeft = secondsLeft - 10;
     }
-    else if (secondsLeft < 10) {
-        // Stops the timer (the timer that I want to stop)
-        clearInterval(timerInterval);
-        // Calls function for when the time is up
-        gameOver()
-    }
+    // TODO add code to make sure the time will not go negative
     // Code to reduce score
     if (score > 0) {
         score--;
@@ -265,7 +263,7 @@ next();
 
 function next() {
     // Need to add a stopping point - 10 questions currentQuestion<9
-    if (currentQuestion < 10) {
+    if (currentQuestion < challenge.length) {
         changeQuestion(currentQuestion);
     }
 
@@ -280,6 +278,41 @@ function gameOver() {
     finalContainer.setAttribute("class", "show");
     questionContainer.setAttribute("class", "hide");
     scoreEl.textContent = "Your final score is: " + score;
+    finalBtn.addEventListener("click", function () {
+        if (inputEl.value === "") {
+            alert("Please enter your initials!");
+        }
+        else {
+            storedData();
+        }
+    });
 }
 
-// Add Json - local storage
+function storedData() {
+    var userData = {
+        userInitials: localStorage.setItem("initials", inputEl.value),
+        userScore: localStorage.setItem("final-score", score)
+    }
+    // stringify array in order to store in local
+    var storedData = JSON.stringify(userData);
+    localStorage.setItem("highscores", storedData)
+}
+
+// TODO fix highcore section
+function displayHighScore() {
+    introduction.setAttribute("class", "hide");
+    finalContainer.setAttribute("class", "hide");
+    questionContainer.setAttribute("class", "hide");
+    highscoresContainer.setAttribute("class", "show");
+
+    var savedHighScores = localStorage.getItem("highscores");
+    var storedData = JSON.parse(savedHighScores);
+
+    for (i = 0; i < storedData.length; i++) {
+        var pTag = document.createElement("p");
+        pTag.innerHTML = userData[i].userInitials + ": " + userData[i].userScore;
+        highscoresContainer.appendChild(pTag);
+    }
+
+    console.log(savedHighScores);
+}
