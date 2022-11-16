@@ -1,7 +1,7 @@
 // Variable Declaration
 
 // Created an array of objects to store all the questions and options that will be displayed in the question-container.
-var challenge = [
+var challengeQuiz = [
     // // Objects are a collection of properties, and properties are made up of key-value pairs
     {
         question: "Inside which HTML element do we put the JavaScript?",
@@ -139,7 +139,7 @@ function setTimer() {
         // Displays the seconds left
         timerEl.textContent = secondsLeft;
         // When time is over or the user answers eveyrthing - clear interval so the time does not turn negative
-        if (secondsLeft === 0 || currentQuestion > challenge.length) {
+        if (secondsLeft === 0 || currentQuestion > challengeQuiz.length) {
             // Stops the timer (the timer that I want to stop)
             clearInterval(timerInterval);
             // Calls function for when the time is up
@@ -162,17 +162,17 @@ function startQuiz(currentQuestion) {
 
 function changeQuestion(currentQuestion) {
     // Displays the question inside the container. I chose text content because innerHTML thinks <> is an element even though is inside strings
-    questionEl.textContent = challenge[currentQuestion].question;
-    option1El.textContent = challenge[currentQuestion].options[0].text;
-    option2El.textContent = challenge[currentQuestion].options[1].text;
-    option3El.textContent = challenge[currentQuestion].options[2].text;
-    option4El.textContent = challenge[currentQuestion].options[3].text;
+    questionEl.textContent = challengeQuiz[currentQuestion].question;
+    option1El.textContent = challengeQuiz[currentQuestion].options[0].text;
+    option2El.textContent = challengeQuiz[currentQuestion].options[1].text;
+    option3El.textContent = challengeQuiz[currentQuestion].options[2].text;
+    option4El.textContent = challengeQuiz[currentQuestion].options[3].text;
 
     // Providing the true or false value to the options
-    option1El.value = challenge[currentQuestion].options[0].isCorrect;
-    option2El.value = challenge[currentQuestion].options[1].isCorrect;
-    option3El.value = challenge[currentQuestion].options[2].isCorrect;
-    option4El.value = challenge[currentQuestion].options[3].isCorrect;
+    option1El.value = challengeQuiz[currentQuestion].options[0].isCorrect;
+    option2El.value = challengeQuiz[currentQuestion].options[1].isCorrect;
+    option3El.value = challengeQuiz[currentQuestion].options[2].isCorrect;
+    option4El.value = challengeQuiz[currentQuestion].options[3].isCorrect;
 
     // Current question display
     curQuestionEl.innerHTML = currentQuestion + 1;
@@ -263,7 +263,7 @@ next();
 
 function next() {
     // Need to add a stopping point - 10 questions currentQuestion<9
-    if (currentQuestion < challenge.length) {
+    if (currentQuestion < challengeQuiz.length) {
         changeQuestion(currentQuestion);
     }
 
@@ -288,16 +288,19 @@ function gameOver() {
     });
 }
 
-
-var userData = {
-    userInitials: localStorage.setItem("initials", inputEl.value),
-    userScore: localStorage.setItem("final-score", score),
-    storedData: function () {
-        return this.userInitials + ":" + this.userScore;
+function storedData() {
+    var userData = {
+        userInitials: localStorage.setItem("initials", inputEl.value),
+        userScore: localStorage.setItem("final-score", score)
     }
+
+    // If we try to store a JavaScript object without first converting it to a string, we will get an [object, object] response
+    localStorage.setItem("highscores", JSON.stringify(userData));
+    displayHighScore();
 }
 
-var setHighScores = localStorage.setItem("highscores", storedData);
+
+
 
 // TODO fix highcore section
 function displayHighScore() {
@@ -306,14 +309,16 @@ function displayHighScore() {
     questionContainer.setAttribute("class", "hide");
     highscoresContainer.setAttribute("class", "show");
 
-    var savedHighScores = localStorage.getItem("highscores");
-    setHighScores = JSON.parse(savedHighScores);
+    // To retrieve, we need to to parse the string. But now it shows "undefined"....
+    var savedData = localStorage.getItem("highscores");
+    console.log(JSON.parse(savedData));
 
-    for (i = 0; i < setHighScores.length; i++) {
+    for (i = 0; i < savedData.length; i++) {
         var pTag = document.createElement("p");
-        pTag.innerHTML = storedData;
-        highscoresContainer.appendChild(pTag);
+        pTag.innerHTML = savedData[i].userInitials + ": " + savedData[i].userScore;
+        var highscoreEl = document.getElementById("display-score");
+        highscoreEl.appendChild(pTag);
     }
 
-    console.log(savedHighScores);
+    console.log(savedData);
 }

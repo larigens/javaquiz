@@ -284,6 +284,15 @@ input[type=text]:focus {
     color: var(--dark-shades);
 }
 
+.logo img {
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+#display-score {
+    margin-top: 20px;
+}
+
 footer {
     margin: 15px 0;
     font-size: 15px;

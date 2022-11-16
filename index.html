@@ -83,7 +83,7 @@
                 <p id="final-score"></p>
                 <input id="initials" type="text" placeholder="Enter your initials" maxlength="2">
                 <br>
-                <button id="final-btn" type="submit">Submit</button>
+                <button id="final-btn" type="submit" onclick="storedData()">Submit</button>
             </div>
         </section>
 
@@ -91,8 +91,15 @@
 
         <!-- Sidebar to display high scores -->
         <section id="highscores" data-state="hidden" class="hide">
-            <img src="./assets/images/logo.png" alt="logo" width="100px" height="100px">
+            <figure class="logo">
+                <img src="./assets/images/logo.png" alt="logo" width="100px" height="100px">
+            </figure>
+            <div id="display-score">
+                
+            </div>
             <!-- Display list of scores -->
+
+
         </section>
 
     </main>
