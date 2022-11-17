@@ -282,6 +282,10 @@ function gameOver() {
         if (inputEl.value === "") {
             alert("Please enter your initials!");
         }
+        // Need to fix this - do not store if it is empty
+        else if (inputEl.value !== null) {
+            storedData();
+        }
     });
 }
 
@@ -329,4 +333,13 @@ function displayHighScore() {
         highscoreEl.appendChild(pTag);
     }
 
+}
+
+function backTo() {
+    introduction.setAttribute("class", "show");
+    finalContainer.setAttribute("class", "hide");
+    questionContainer.setAttribute("class", "hide");
+    highscoresContainer.setAttribute("class", "hide");
+// TODO: Fix bug - if click highcore section and then start, it will not set the timer.
+    start.addEventListener("click", setTimer);
 }
