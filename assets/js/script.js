@@ -282,20 +282,25 @@ function gameOver() {
         if (inputEl.value === "") {
             alert("Please enter your initials!");
         }
-        else {
-            storedData();
-        }
     });
 }
 
 function storedData() {
+    // Had to add an empty array to be able to render the results
+    var highScores = [];
+    if (highScores === null) {
+        highScores = [];
+    }
     var userData = {
-        userInitials: localStorage.setItem("initials", inputEl.value),
-        userScore: localStorage.setItem("final-score", score)
+        userInitials: inputEl.value,
+        userScore: score
     }
 
+    highScores.push(userData);
+
     // If we try to store a JavaScript object without first converting it to a string, we will get an [object, object] response
-    localStorage.setItem("highscores", JSON.stringify(userData));
+    localStorage.setItem("highscores", JSON.stringify(highScores));
+
     displayHighScore();
 }
 
@@ -308,17 +313,20 @@ function displayHighScore() {
     finalContainer.setAttribute("class", "hide");
     questionContainer.setAttribute("class", "hide");
     highscoresContainer.setAttribute("class", "show");
+    // To hide the timer
+    timerEl.setAttribute("class", "hide");
 
-    // To retrieve, we need to to parse the string. But now it shows "undefined"....
+    // To retrieve, we need to to parse the string. B
     var savedData = localStorage.getItem("highscores");
-    console.log(JSON.parse(savedData));
+    savedData = JSON.parse(savedData);
+    // I can see that this has been stored and converted into an object - the issue is def below
 
     for (i = 0; i < savedData.length; i++) {
         var pTag = document.createElement("p");
-        pTag.innerHTML = savedData[i].userInitials + ": " + savedData[i].userScore;
+        pTag.textContent = savedData[i].userInitials + ': ' + savedData[i].userScore;
+        // [i].userInitials + ": " + storedScore[i].userScore;
         var highscoreEl = document.getElementById("display-score");
         highscoreEl.appendChild(pTag);
     }
 
-    console.log(savedData);
 }
