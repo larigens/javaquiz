@@ -53,7 +53,7 @@ For support, email larigens@gmail.com.
 
 - [FrontEnd Trend](https://linktr.ee/frontend_trend)
   
-- [Rouvelle](https://www.rouvelle.com/javaScript_strings_to_numbers.htm)
+- [LogRocket](https://blog.logrocket.com/storing-retrieving-javascript-objects-localstorage/)
 
 ## Feedback
 

@@ -1,8 +1,8 @@
 // Variable Declaration
 
-// Created an array of objects to store all the questions and options that will be displayed in the question-container.
+// Created an array of objects to store all the questions and options that will be displayed in the question container.
 var challengeQuiz = [
-    // // Objects are a collection of properties, and properties are made up of key-value pairs
+    // Objects are a collection of properties and properties are made up of key-value pairs.
     {
         question: "Inside which HTML element do we put the JavaScript?",
         options: [
@@ -97,249 +97,178 @@ var challengeQuiz = [
 ];
 
 // Get elements from HTML
-// Add event listener to button - do not add the () or it will run the function without the user clicking the button
-var start = document.getElementById("start");
+
+// Highscores Section Elements
+var highscoresContainer = document.getElementById("highscores");
+var highscoreEl = document.getElementById("display-score");
+
+// Timer Section Elements
 var timerEl = document.getElementById("timer");
 
-var introduction = document.getElementById("introduction");
+// Introduction Section Elements
+var introductionContainer = document.getElementById("introduction");
+var startBtn = document.getElementById("start");
+startBtn.addEventListener("click", setTimer);
 
+// Questions Section Elements
 var questionContainer = document.getElementById("question-section");
-// var optionsContainer = document.getElementsByClassName("question-options");
 var questionEl = document.getElementById("question");
+var optionsContainer = document.getElementById("question-options");
 var option1El = document.getElementById("option1");
 var option2El = document.getElementById("option2");
 var option3El = document.getElementById("option3");
 var option4El = document.getElementById("option4");
-
-var answerContainer = document.getElementsByClassName("question-answer")
+var answerContainer = document.getElementById("question-answer");
 var answerEl = document.getElementById("answer-check");
-var curQuestionEl = document.getElementById("current-question");
+var currentQuestionEl = document.getElementById("current-question");
+
+// Final Section Elements
 var finalContainer = document.getElementById("final-container");
 var scoreEl = document.getElementById("final-score");
 var inputEl = document.getElementById("initials");
 var finalBtn = document.getElementById("final-btn");
 
-var highscoresContainer = document.getElementById("highscores");
-
-// Others
+// Other Variables
+var secondsLeft = 100;
 var currentQuestion = 0;
-// Had to add 1 seconds because it only starts to show the timer after 1s
-var secondsLeft = 101;
 var score = 0;
-var finalScore;
 
-// // Starting Quiz on Click
-
-// Starts the timer
+// Starting Quiz on Click - Starts the timer.
 function setTimer() {
-    // Sets interval in variable
+    timerEl.setAttribute("class", "show");
+    // Sets interval in variable.
     var timerInterval = setInterval(function () {
-        // Decrementing
+        // Decrementing.
         secondsLeft--;
-        // Displays the seconds left
+        // Displays the remaining seconds.
         timerEl.textContent = secondsLeft;
-        // When time is over or the user answers eveyrthing - clear interval so the time does not turn negative
+        // When the time is up or when the user answers all the questions - clear interval so that the time does not become negative.
         if (secondsLeft === 0 || currentQuestion > challengeQuiz.length) {
-            // Stops the timer (the timer that I want to stop)
+            // Stops the timer (the timer/var I want to stop).
             clearInterval(timerInterval);
-            // Calls function for when the time is up
+            // Calls the function for when time is up.
             gameOver();
         }
-        // Computer runs in miliseconds. Every 1s it will do the task. It will update the time every second (1000ms)
+        // The computer runs in milliseconds. Every 1s it will do the task - It will update the time every second (1000ms).
     }, 1000);
-    // Displays the question container 
-    startQuiz(0)
-}
-
-// Starts the quiz and removes the introduction container
-function startQuiz(currentQuestion) {
-    // Change element display to hide it
-    introduction.setAttribute("class", "hide");
-    // First Question will appear
+    // Displays the question container and hides the introduction container.
+    introductionContainer.setAttribute("class", "hide");
     questionContainer.setAttribute("class", "show");
-    changeQuestion(currentQuestion);
-}
-
-function changeQuestion(currentQuestion) {
-    // Displays the question inside the container. I chose text content because innerHTML thinks <> is an element even though is inside strings
-    questionEl.textContent = challengeQuiz[currentQuestion].question;
-    option1El.textContent = challengeQuiz[currentQuestion].options[0].text;
-    option2El.textContent = challengeQuiz[currentQuestion].options[1].text;
-    option3El.textContent = challengeQuiz[currentQuestion].options[2].text;
-    option4El.textContent = challengeQuiz[currentQuestion].options[3].text;
-
-    // Providing the true or false value to the options
-    option1El.value = challengeQuiz[currentQuestion].options[0].isCorrect;
-    option2El.value = challengeQuiz[currentQuestion].options[1].isCorrect;
-    option3El.value = challengeQuiz[currentQuestion].options[2].isCorrect;
-    option4El.value = challengeQuiz[currentQuestion].options[3].isCorrect;
-
-    // Current question display
-    curQuestionEl.innerHTML = currentQuestion + 1;
-}
-
-// Try event target to reduce this code
-
-// var optionsClick = document.getElementsByClassName("question-options")
-// Have to add this function to make sure it will only check for the button, not the rest of the container
-// use matches.
-// optionsClick.addEventListener("click", function(event){
-// var clickedEl = event.target
-// if (clickedEl.matches("button")){
-// var state = element.getAttribute("data-state")
-// }
-// if (state === "hidden") {
-//     element.dataset.state = "visible";
-// }
-//     if (clickedEl.value === "true"){
-//         isRight();
-//     }
-//     else {
-//         isWrong();
-//     }
-// })
-// function loadQuestions(numberOfOptions) {
-//     for (var i = 0; i < numberOfOptions; i++) {
-//         console.log('Generate options: ${i}')
-//         optionsContainer.innerHTML += '<button id="option${1}" class="btn" onclick="selectedAns1(); next()"></button>'
-//     }
-// }
-
-// Validates the question 
-function selectedAns1() {
-    if (option1El.value === "true") {
-        isRight();
-    }
-    else {
-        isWrong();
-    }
-}
-function selectedAns2() {
-    if (option2El.value === "true") {
-        isRight();
-    }
-    else {
-        isWrong();
-    }
-}
-function selectedAns3() {
-    if (option3El.value === "true") {
-        isRight();
-    }
-    else {
-        isWrong();
-    }
-}
-function selectedAns4() {
-    if (option4El.value === "true") {
-        isRight();
-    }
-    else {
-        isWrong();
-    }
-}
-
-// Displays answer
-function isRight() {
-    answerEl.textContent = "Impressive!";
-    answerEl.style.color = "#f0a0cf";
-    score++;
-}
-function isWrong() {
-    answerEl.textContent = "False";
-    answerEl.style.color = "#6444c3";
-    // Code to reduce the time by 10s
-    if (secondsLeft >= 10) {
-        secondsLeft = secondsLeft - 10;
-    }
-    // TODO add code to make sure the time will not go negative
-    // Code to reduce score
-    if (score > 0) {
-        score--;
-    }
-}
-
-next();
-
-function next() {
-    // Need to add a stopping point - 10 questions currentQuestion<9
-    if (currentQuestion < challengeQuiz.length) {
-        changeQuestion(currentQuestion);
-    }
-
+    renderQuestions(currentQuestion);
+    // It will increment the question number to keep updating the container.
     currentQuestion++;
 }
 
-// Need something to remove the text context after the question changes
+function renderQuestions(index) {
+    // Sets the timer to show the answer element for only 1s;
+    setInterval(function () {
+        answerEl.textContent = "";
+    }, 1000);
+    // Displays the question inside the container. I chose text content because innerHTML thinks that <> is an element even though it is inside strings.
+    questionEl.textContent = challengeQuiz[index].question;
+    option1El.textContent = challengeQuiz[index].options[0].text;
+    option2El.textContent = challengeQuiz[index].options[1].text;
+    option3El.textContent = challengeQuiz[index].options[2].text;
+    option4El.textContent = challengeQuiz[index].options[3].text;
 
-// Function for when the time is up
+    // Provide true or false value to the options.
+    option1El.value = challengeQuiz[index].options[0].isCorrect;
+    option2El.value = challengeQuiz[index].options[1].isCorrect;
+    option3El.value = challengeQuiz[index].options[2].isCorrect;
+    option4El.value = challengeQuiz[index].options[3].isCorrect;
+
+    // Displays the current question number.
+    currentQuestionEl.innerHTML = index + 1;
+}
+
+// Validates the question 
+optionsContainer.addEventListener("click", function (event) {
+    var clickedEl = event.target;
+    // Had to add .matches to ensure that it will only check if the button has been clicked.
+    if (clickedEl.matches(".btn") && clickedEl.value === "true") {
+        answerEl.textContent = "Impressive!";
+        answerEl.style.color = "#f0a0cf";
+        score++;
+    }
+    else if (clickedEl.matches(".btn") && clickedEl.value === "false") {
+        answerEl.textContent = "Maybe next time!";
+        answerEl.style.color = "#6444c3";
+        // Reduces time by 10s.
+        if (secondsLeft >= 10) {
+            secondsLeft = secondsLeft - 10;
+        }
+        // Reduces one point from the score.
+        if (score > 0) {
+            score--;
+        }
+    }
+    nextQuestion();
+}
+);
+
+function nextQuestion() {
+    // Need to add a breakpoint.
+    if (currentQuestion < challengeQuiz.length) {
+        renderQuestions(currentQuestion);
+    }
+    currentQuestion++;
+}
+
+// Function for when time is up.
 function gameOver() {
-    // So the user can input his/her initials
     finalContainer.setAttribute("class", "show");
     questionContainer.setAttribute("class", "hide");
     scoreEl.textContent = "Your final score is: " + score;
     finalBtn.addEventListener("click", function () {
         if (inputEl.value === "") {
             alert("Please enter your initials!");
+            // Added return so that the score is not saved without the initials.
+            return;
         }
-        // Need to fix this - do not store if it is empty
         else if (inputEl.value !== null) {
-            storedData();
+            storeData();
         }
     });
 }
 
-function storedData() {
-    // Had to add an empty array to be able to render the results
-    var highScores = [];
-    if (highScores === null) {
-        highScores = [];
-    }
+// If there is no saved score, then renders an empty array.
+var highScores = JSON.parse(localStorage.getItem("highscores")) || [];
+
+function storeData() {
     var userData = {
         userInitials: inputEl.value,
         userScore: score
     }
-
+    // Saves the data in the highscore array.
     highScores.push(userData);
 
-    // If we try to store a JavaScript object without first converting it to a string, we will get an [object, object] response
+    // Need to convert the object to a string before storing it, or it'll return [object, object].
     localStorage.setItem("highscores", JSON.stringify(highScores));
 
-    displayHighScore();
+    renderHighScores();
 }
 
 
-
-
-// TODO fix highcore section
-function displayHighScore() {
-    introduction.setAttribute("class", "hide");
-    finalContainer.setAttribute("class", "hide");
-    questionContainer.setAttribute("class", "hide");
-    highscoresContainer.setAttribute("class", "show");
-    // To hide the timer
+function renderHighScores() {
+    // To not overwrite the stored data.
+    highscoreEl.innerHTML = "";
     timerEl.setAttribute("class", "hide");
+    introductionContainer.setAttribute("class", "hide");
+    questionContainer.setAttribute("class", "hide");
+    finalContainer.setAttribute("class", "hide");
+    highscoresContainer.setAttribute("class", "show");
 
-    // To retrieve, we need to to parse the string. B
-    var savedData = localStorage.getItem("highscores");
-    savedData = JSON.parse(savedData);
-    // I can see that this has been stored and converted into an object - the issue is def below
-
-    for (i = 0; i < savedData.length; i++) {
+    // Creates a new element for each new data and attaches it to the container.
+    for (i = 0; i < highScores.length; i++) {
         var pTag = document.createElement("p");
-        pTag.textContent = savedData[i].userInitials + ': ' + savedData[i].userScore;
-        // [i].userInitials + ": " + storedScore[i].userScore;
-        var highscoreEl = document.getElementById("display-score");
+        pTag.textContent = highScores[i].userInitials + ': ' + highScores[i].userScore;
         highscoreEl.appendChild(pTag);
     }
-
 }
 
 function backTo() {
-    introduction.setAttribute("class", "show");
-    finalContainer.setAttribute("class", "hide");
+    introductionContainer.setAttribute("class", "show");
     questionContainer.setAttribute("class", "hide");
+    finalContainer.setAttribute("class", "hide");
     highscoresContainer.setAttribute("class", "hide");
-// TODO: Fix bug - if click highcore section and then start, it will not set the timer.
-    start.addEventListener("click", setTimer);
 }

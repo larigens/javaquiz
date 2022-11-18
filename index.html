@@ -31,7 +31,7 @@
     <header>
         <h1>Java<span class="quiz">Quiz</span></h1>
         <nav>
-            <button class="highscores-btn" onclick="displayHighScore()"><i class="fa fa-bar-chart"
+            <button class="highscores-btn" onclick="renderHighScores()"><i class="fa fa-bar-chart"
                     aria-hidden="true"></i>View HighScores</button>
         </nav>
         <div id="timer-container">
@@ -41,7 +41,6 @@
 
     <!-- Main Content -->
     <main id="main">
-
         <!-- Introduction Section -->
         <section id="introduction" data-state="visible" class="show">
             <h2>Coding Quiz Challenge</h2>
@@ -54,22 +53,23 @@
                 </li>
                 <li>The game ends when you answer all the questions or once the time ends.</li>
             </ol>
-            <button id="start" onclick="setTimer()">Start Quiz</button>
+            <!-- Added event listener to button - the function will only be executed after the user clicks the button. -->
+            <button id="start">Start Quiz</button>
         </section>
 
         <!-- Question Section -->
         <section id="question-section" data-state="hidden" class="hide">
             <!-- All the divs were added for styling and positioning -->
-            <div class="question-title">
+            <div id="question-title">
                 <h3 id="question"></h3>
             </div>
-            <div class="question-options">
-                <button id="option1" class="btn" onclick="selectedAns1(); next()"></button>
-                <button id="option2" class="btn" onclick="selectedAns2(); next()"></button>
-                <button id="option3" class="btn" onclick="selectedAns3(); next()"></button>
-                <button id="option4" class="btn" onclick="selectedAns4(); next()"></button>
+            <div id="question-options">
+                <button id="option1" class="btn"></button>
+                <button id="option2" class="btn"></button>
+                <button id="option3" class="btn"></button>
+                <button id="option4" class="btn"></button>
             </div>
-            <div class="question-answer">
+            <div id="question-answer">
                 <p id="answer-check"></p>
             </div>
             <div class="question-footer">
@@ -83,7 +83,7 @@
                 <p id="final-score"></p>
                 <input id="initials" type="text" placeholder="Enter your initials" maxlength="2">
                 <br>
-                <button id="final-btn" type="submit" onclick="storedData()">Submit</button>
+                <button id="final-btn" type="submit">Submit</button>
             </div>
         </section>
 
@@ -98,7 +98,7 @@
                 <!-- Display list of saved scores -->
             </div>
             <button id="back-btn" onclick="backTo()">Back</button>
-            
+
 
 
         </section>
