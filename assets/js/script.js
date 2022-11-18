@@ -108,6 +108,7 @@ var timerEl = document.getElementById("timer");
 // Introduction Section Elements
 var introductionContainer = document.getElementById("introduction");
 var startBtn = document.getElementById("start");
+// Added event listener to button - the function will only be executed after the user clicks the button.
 startBtn.addEventListener("click", setTimer);
 
 // Questions Section Elements
@@ -118,7 +119,6 @@ var option1El = document.getElementById("option1");
 var option2El = document.getElementById("option2");
 var option3El = document.getElementById("option3");
 var option4El = document.getElementById("option4");
-var answerContainer = document.getElementById("question-answer");
 var answerEl = document.getElementById("answer-check");
 var currentQuestionEl = document.getElementById("current-question");
 
@@ -153,17 +153,17 @@ function setTimer() {
     }, 1000);
     // Displays the question container and hides the introduction container.
     introductionContainer.setAttribute("class", "hide");
-    questionContainer.setAttribute("class", "show");
+    questionContainer.setAttribute("class", "show section");
     renderQuestions(currentQuestion);
     // It will increment the question number to keep updating the container.
     currentQuestion++;
 }
 
 function renderQuestions(index) {
-    // Sets the timer to show the answer element for only 1s;
+    // Sets the timer to show the answer element for only 1.2s;
     setInterval(function () {
         answerEl.textContent = "";
-    }, 1000);
+    }, 1200);
     // Displays the question inside the container. I chose text content because innerHTML thinks that <> is an element even though it is inside strings.
     questionEl.textContent = challengeQuiz[index].question;
     option1El.textContent = challengeQuiz[index].options[0].text;
@@ -216,7 +216,7 @@ function nextQuestion() {
 
 // Function for when time is up.
 function gameOver() {
-    finalContainer.setAttribute("class", "show");
+    finalContainer.setAttribute("class", "show section");
     questionContainer.setAttribute("class", "hide");
     scoreEl.textContent = "Your final score is: " + score;
     finalBtn.addEventListener("click", function () {
@@ -256,7 +256,7 @@ function renderHighScores() {
     introductionContainer.setAttribute("class", "hide");
     questionContainer.setAttribute("class", "hide");
     finalContainer.setAttribute("class", "hide");
-    highscoresContainer.setAttribute("class", "show");
+    highscoresContainer.setAttribute("class", "show section");
 
     // Creates a new element for each new data and attaches it to the container.
     for (i = 0; i < highScores.length; i++) {
@@ -267,7 +267,7 @@ function renderHighScores() {
 }
 
 function backTo() {
-    introductionContainer.setAttribute("class", "show");
+    introductionContainer.setAttribute("class", "show section");
     questionContainer.setAttribute("class", "hide");
     finalContainer.setAttribute("class", "hide");
     highscoresContainer.setAttribute("class", "hide");

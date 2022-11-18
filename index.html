@@ -31,18 +31,16 @@
     <header>
         <h1>Java<span class="quiz">Quiz</span></h1>
         <nav>
-            <button class="highscores-btn" onclick="renderHighScores()"><i class="fa fa-bar-chart"
+            <button onclick="renderHighScores()"><i class="fa fa-bar-chart"
                     aria-hidden="true"></i>View HighScores</button>
-        </nav>
-        <div id="timer-container">
             <p><i class="fa fa-clock-o" aria-hidden="true"></i> Timer: <span id="timer"></span></p>
-        </div>
+        </nav>
     </header>
 
     <!-- Main Content -->
     <main id="main">
         <!-- Introduction Section -->
-        <section id="introduction" data-state="visible" class="show">
+        <section id="introduction" class="show section">
             <h2>Coding Quiz Challenge</h2>
             <ol>
                 <li> You will be presented with <span class="standout">10 questions</span> and have <span
@@ -53,12 +51,11 @@
                 </li>
                 <li>The game ends when you answer all the questions or once the time ends.</li>
             </ol>
-            <!-- Added event listener to button - the function will only be executed after the user clicks the button. -->
-            <button id="start">Start Quiz</button>
+            <button id="start" class="button">Start Quiz</button>
         </section>
 
         <!-- Question Section -->
-        <section id="question-section" data-state="hidden" class="hide">
+        <section id="question-section" class="hide">
             <!-- All the divs were added for styling and positioning -->
             <div id="question-title">
                 <h3 id="question"></h3>
@@ -69,50 +66,36 @@
                 <button id="option3" class="btn"></button>
                 <button id="option4" class="btn"></button>
             </div>
-            <div id="question-answer">
-                <p id="answer-check"></p>
-            </div>
-            <div class="question-footer">
-                <p>Question <span id="current-question"></span> of 10</p>
-            </div>
+            <p id="answer-check"></p>
+            <p class="cur-question">Question <span id="current-question"></span> of 10</p>
         </section>
 
         <!-- Game Over Section -->
-        <section id="final-container" data-state="hidden" class="hide">
-            <div class="final-card">
-                <p id="final-score"></p>
-                <input id="initials" type="text" placeholder="Enter your initials" maxlength="2">
-                <br>
-                <button id="final-btn" type="submit">Submit</button>
-            </div>
+        <section id="final-container" class="hide">
+            <p id="final-score"></p>
+            <input id="initials" type="text" placeholder="Enter your initials" maxlength="2">
+            <br>
+            <button id="final-btn" class="button">Submit</button>
         </section>
 
-        <!-- Add buttons to quit and replay -->
-
-        <!-- HighScores Section-->
-        <section id="highscores" data-state="hidden" class="hide">
+        <!-- HighScores Section -->
+        <section id="highscores" class="hide">
             <figure class="logo">
                 <img src="./assets/images/logo.png" alt="logo" width="100px" height="100px">
             </figure>
             <div id="display-score">
-                <!-- Display list of saved scores -->
+                <!-- Displays list of saved scores. -->
             </div>
-            <button id="back-btn" onclick="backTo()">Back</button>
-
-
-
+            <button id="back-btn" class="button" onclick="backTo()">Back</button>
         </section>
 
     </main>
-
     <!-- Footer -->
     <footer>
         <p> &copy; 2022 Larissa Guilherme </p>
     </footer>
-
     <!-- My JS file -->
     <script src="./assets/js/script.js"></script>
-
 </body>
 
 </html>

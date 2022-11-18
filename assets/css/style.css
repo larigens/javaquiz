@@ -52,39 +52,49 @@ h2,
 }
 
 nav {
+    display: inline-flex;
     margin: 34px 20px 25px 45px;
     padding: 15px;
 }
 
 nav button,
-#timer-container p,
+nav p,
 ol,
 h3,
 .btn,
-.question-footer p,
-::placeholder,
-#final-btn {
+.cur-question,
+::placeholder {
     color: var(--dark-accent);
 }
 
 nav button {
     border: none;
     outline: none;
-    background-color: var(--light-shades);
+    cursor: pointer;
     font-size: 16px;
+}
+
+nav button,
+.btn {
+    background-color: var(--light-shades);
 }
 
 nav button i {
     margin-right: 6px;
 }
 
-#timer-container {
-    margin: 52px 20px 20px 48px;
-    padding-left: 500px;
+nav p {
+    display: inline-flex;
+    margin: 4px;
+    padding-left: 590px;
 }
 
-#timer-container p i {
-    margin-right: 5px;
+nav p i {
+    margin: 0 5px;
+}
+
+#timer {
+    margin-left: 5px;
 }
 
 main {
@@ -100,10 +110,7 @@ main,
     align-items: center;
 }
 
-#introduction,
-#question-section,
-#final-container,
-#highscores {
+.section {
     margin: 30px 0 10px 0;
     border-radius: 5px;
     box-shadow: 0 4px 25px var(--light-accent);
@@ -113,13 +120,9 @@ main,
     padding: 15px;
 }
 
-#introduction,
-#question-section,
-#final-container,
-#highscores,
-#start,
+.section,
+.button,
 .btn,
-#final-btn,
 footer {
     text-align: center;
 }
@@ -146,32 +149,29 @@ li {
     font-weight: 500;
 }
 
-
-#start,
-#final-btn,
-#back-btn {
+.button {
     margin-top: 40px;
     box-shadow: 0 2px 10px 0 var(--light-accent);
     padding: 9px 30px;
 }
 
-#start,
-.btn,
-#next,
-#final-btn,
-#back-btn {
+.button,
+.btn {
     cursor: pointer;
     outline: none;
-    border: none;
     border-radius: 5px;
     font-size: 18px;
     font-family: var(--body);
 }
 
-#start,
-#back-btn,
-.btn:hover,
-#final-btn {
+.button,
+.btn,
+.btn:hover {
+    border: none;
+}
+
+.button,
+.btn:hover {
     background: var(--gradient);
     color: var(--light-shades);
 }
@@ -188,7 +188,7 @@ li {
     margin-top: 20px;
 }
 
-.question-title {
+#question-title {
     margin-top: 18px;
     height: 6vh;
 }
@@ -197,7 +197,7 @@ h3 {
     font-size: 21px;
 }
 
-.question-options {
+#question-options {
     margin: 10px 0 8px 30px;
     height: 35vh;
 }
@@ -209,38 +209,16 @@ h3 {
     padding: 9px 25px;
 }
 
-.btn,
-#next {
-    background: var(--light-shades);
-}
-
-.btn:hover {
-    border: none;
-}
-
-.question-answer {
-    height: 4vh;
-}
-
 #answer-check {
     margin: 5px 8px;
+    padding: 5px;
     font-size: 19px;
     font-weight: bold;
     letter-spacing: 0.3rem;
 }
 
-.question-footer {
-    margin: 15px auto 2px auto;
-}
-
-.question-footer p {
+.cur-question {
     font-size: 15px;
-}
-
-.final-card {
-    margin-top: 100px;
-    padding: 20px;
-    text-align: center;
 }
 
 #final-score {
@@ -282,6 +260,7 @@ input[type=text]:focus {
     width: 40%;
 }
 
+/* It will be created as soon as the user finishes the quiz */
 #highscores p {
     font-size: 18px;
     color: var(--dark-shades);
