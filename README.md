@@ -27,7 +27,7 @@ Detailed information about [cloning a repository.](https://docs.github.com/en/re
 
 ## Mock-Up
 
-The following image shows the web application's appearance and functionality:
+The following images shows the web application's appearance and functionality:
 
 ![App Screenshot](./assets/images/screenshot.png)
 ![App Screenshot](./assets/images/screenshot2.png)
