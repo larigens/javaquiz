@@ -29,17 +29,18 @@ Detailed information about [cloning a repository.](https://docs.github.com/en/re
 
 The following image shows the web application's appearance and functionality:
 
-![App Screenshot](./assets/images/demo.gif)
+![App Screenshot](./assets/images/screenshot.png)
+![App Screenshot](./assets/images/screenshot2.png)
 
 ## Usage/Examples
 
 First, the user needs to click the start button to start the timer, and then a series of questions will appear so that the user can test his/her knowledge of the basics of JavaScript.
 
->**If the user answers a question incorrectly, 30 seconds will be subtracted from the clock.**
-
+> **If the user answers a question incorrectly, 10 seconds will be subtracted from the timer and 1 point will be reduced from the total score.**
+>
 >The quiz ends when all questions are answered or the timer reaches 0.
 
->The user can save his/her initials and score to compare progress with friends.
+>The user can save his/her initials and score to compare progress with friends and can access this information by clicking on the highscores button in the upper left corner of the page.
 
 ## Support
 

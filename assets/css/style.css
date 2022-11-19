@@ -44,7 +44,8 @@ h1,
 nav button:hover,
 h2,
 .standout,
-#final-score {
+#final-score,
+#highscores h3 {
     background: var(--gradient);
     background-clip: none;
     -webkit-background-clip: text;
@@ -266,6 +267,12 @@ input[type=text]:focus {
     width: 40%;
 }
 
+#highscores h3 {
+    margin-top: 10px;
+    font-weight: 700;
+    letter-spacing: 0.7rem;
+}
+
 /* It will be created as soon as the user finishes the quiz. */
 #highscores p {
     font-size: 18px;
@@ -282,7 +289,7 @@ input[type=text]:focus {
 
 #back-btn {
     position: absolute;
-    bottom: 6em;
+    bottom: 6.3em;
     left: 39.2em;
 }
 
