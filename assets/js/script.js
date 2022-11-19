@@ -154,16 +154,12 @@ function setTimer() {
     // Displays the question container and hides the introduction container.
     introductionContainer.setAttribute("class", "hide");
     questionContainer.setAttribute("class", "show section");
-    renderQuestions(currentQuestion);
+    renderQuestions(0);
     // It will increment the question number to keep updating the container.
     currentQuestion++;
 }
 
 function renderQuestions(index) {
-    // Sets the timer to show the answer element for only 1.2s;
-    setInterval(function () {
-        answerEl.textContent = "";
-    }, 1200);
     // Displays the question inside the container. I chose text content because innerHTML thinks that <> is an element even though it is inside strings.
     questionEl.textContent = challengeQuiz[index].question;
     option1El.textContent = challengeQuiz[index].options[0].text;
@@ -248,7 +244,6 @@ function storeData() {
     renderHighScores();
 }
 
-
 function renderHighScores() {
     // To not overwrite the stored data.
     highscoreEl.innerHTML = "";
@@ -264,11 +259,4 @@ function renderHighScores() {
         pTag.textContent = highScores[i].userInitials + ': ' + highScores[i].userScore;
         highscoreEl.appendChild(pTag);
     }
-}
-
-function backTo() {
-    introductionContainer.setAttribute("class", "show section");
-    questionContainer.setAttribute("class", "hide");
-    finalContainer.setAttribute("class", "hide");
-    highscoresContainer.setAttribute("class", "hide");
 }
