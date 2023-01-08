@@ -57,7 +57,7 @@ I would recommend downloading [Visual Studio Code](https://code.visualstudio.com
 
 ## Mock-Up
 
-The following gif shows the web application's appearance and functionality:
+The following image shows the web application's appearance and functionality:
 
 ![App Screenshot](./assets/images/screenshot.png)
 ![App Screenshot](./assets/images/screenshot2.png)
