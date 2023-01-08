@@ -2,7 +2,7 @@
 <h1 align="center"> JavaQuiz </h1>
 
 <p align="center">
-  <img src="./assets/favicon/favicon.ico" alt="logo" width="100px" height="100px" />
+  <img src="./assets/favicon/favicon.ico" alt="logo" width="80px" height="80px" />
   <br>
   <i>A timed quiz
     <br>that stores scores.</i>
