@@ -17,7 +17,7 @@
 ![Contributors](https://img.shields.io/github/contributors/larigens/javaquiz?style=plastic&color=ff69b4)
 ![Forks](https://img.shields.io/github/forks/larigens/javaquiz?style=plastic&color=ff69b4)
 ![Stars](https://img.shields.io/github/stars/larigens/javaquiz?style=plastic&color=ff69b4)
-![Licence](https://img.shields.io/github/license/larigens/javaquiz?style=plastic&color=ff69b4)
+![Licence](https://img.shields.io/static/v1?label=License&message=Apache-2.0&color=ff69b4)
 ![Issues](https://img.shields.io/github/issues/larigens/javaquiz?style=plastic&color=ff69b4)
 
 ---
@@ -109,4 +109,4 @@ Our Code of Conduct follows the same principles as the [Contributor Covenant](ht
 
 ## License
 
-Please refer to the [LICENSE](https://choosealicense.com/licenses/mit/) in the repo.
+Please refer to the [LICENSE](https://choosealicense.com/licenses/apache-2.0/) in the repo.
